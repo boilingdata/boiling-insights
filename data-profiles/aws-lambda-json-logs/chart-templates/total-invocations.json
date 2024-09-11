@@ -1,0 +1,39 @@
+{
+  "insightsConfig": {
+    "name": "Total Invocations (count)",
+    "hourly": false,
+    "zoomGroupName": "nop",
+    "numberWithCommas": true
+  },
+  "sqlTemplates": [
+    {
+      "sql": "SELECT SUM(invocations) AS value FROM invocations WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
+    }
+  ],
+  "echartsConfig": {
+    "animation": false,
+    "title": {
+      "text": "Total Invocations (count)",
+      "left": "center"
+    },
+    "graphic": {
+      "elements": [
+        {
+          "type": "text",
+          "left": "center",
+          "top": "center",
+          "style": {
+            "text": "0",
+            "fontSize": 60,
+            "fontWeight": "bold",
+            "lineDash": [0, 200],
+            "lineDashOffset": 0,
+            "fill": "black",
+            "stroke": "#000",
+            "lineWidth": 1
+          }
+        }
+      ]
+    }
+  }
+}

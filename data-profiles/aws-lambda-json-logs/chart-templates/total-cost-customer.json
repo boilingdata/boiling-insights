@@ -1,0 +1,39 @@
+{
+  "insightsConfig": {
+    "name": "Total cost (customer)",
+    "hourly": false,
+    "zoomGroupName": "nop"
+  },
+  "sqlTemplates": [
+    {
+      "comment": "$0.000001/ms BoilingData, AWS 0.000000133334/ms ==> 0.000001 / 0.000000133334 ==> 7.49999625",
+      "sql": "SELECT SUM(cost)*7.49999625 AS value FROM costs WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
+    }
+  ],
+  "echartsConfig": {
+    "animation": false,
+    "title": {
+      "text": "Total Customer cost ($)",
+      "left": "center"
+    },
+    "graphic": {
+      "elements": [
+        {
+          "type": "text",
+          "left": "center",
+          "top": "center",
+          "style": {
+            "text": "0",
+            "fontSize": 60,
+            "fontWeight": "bold",
+            "lineDash": [0, 200],
+            "lineDashOffset": 0,
+            "fill": "black",
+            "stroke": "#000",
+            "lineWidth": 1
+          }
+        }
+      ]
+    }
+  }
+}

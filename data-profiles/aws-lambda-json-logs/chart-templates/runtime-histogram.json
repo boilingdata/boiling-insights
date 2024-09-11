@@ -1,0 +1,70 @@
+{
+  "insightsConfig": {
+    "name": "Runtime histogram",
+    "hourly": false,
+    "zoomGroupName": "runtimeHistogram"
+  },
+  "sqlTemplates": [
+    {
+      "sql": "SELECT (ms_bin + 10) AS hour, SUM(count) AS value FROM runtimemsbin WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY (ms_bin + 10) ORDER BY (ms_bin + 10);"
+    }
+  ],
+  "echartsConfig": {
+    "animation": false,
+    "toolbox": {
+      "show": true,
+      "orient": "vertical",
+      "left": "right",
+      "top": "center",
+      "feature": {
+        "mark": { "show": true },
+        "dataView": { "show": true, "readOnly": false },
+        "magicType": { "show": true, "type": ["line", "bar", "stack"] },
+        "restore": { "show": true },
+        "saveAsImage": { "show": true }
+      }
+    },
+    "title": {
+      "text": "Invocations runtime (ms) histogram",
+      "left": "center"
+    },
+    "xAxis": [
+      {
+        "type": "category",
+        "axisTick": { "show": true },
+        "data": []
+      }
+    ],
+    "dataZoom": [
+      {
+        "type": "inside",
+        "start": 0,
+        "end": 100
+      },
+      {
+        "type": "slider"
+      }
+    ],
+    "yAxis": [
+      {
+        "type": "value"
+      }
+    ],
+    "series": [
+      {
+        "name": "Invocations count",
+        "type": "bar",
+        "smooth": true,
+        "label": {
+          "show": false,
+          "formatter": "{c}",
+          "fontSize": 14,
+          "rich": {
+            "name": {}
+          }
+        },
+        "data": []
+      }
+    ]
+  }
+}

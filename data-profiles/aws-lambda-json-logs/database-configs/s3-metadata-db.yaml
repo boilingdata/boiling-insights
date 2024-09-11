@@ -1,0 +1,13 @@
+name: s3-metadata-db-config
+type: database.config
+dataSource:
+  type: parquet
+  folder: metadata-daily-folder
+dbConfig:
+  name: s3metadata
+  tables:
+    - name: keys
+      sqlTemplate: >
+        SELECT * EXCLUDE(hour), year || '-' || month || '-' || day || '_' || hour AS hour
+        FROM {{{SOURCE}}}
+        ORDER BY year || '-' || month || '-' || day || '_' || hour DESC

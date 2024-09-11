@@ -1,0 +1,66 @@
+{
+  "insightsConfig": {
+    "name": "Costs"
+  },
+  "sqlTemplates": [
+    {
+      "sql": "SELECT SUM(cost) AS value, hour FROM costs WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+    }
+  ],
+  "echartsConfig": {
+    "animation": false,
+    "toolbox": {
+      "show": false,
+      "orient": "vertical",
+      "left": "right",
+      "top": "center",
+      "feature": {
+        "mark": { "show": true },
+        "dataView": { "show": true, "readOnly": false },
+        "magicType": { "show": true, "type": ["line", "bar", "stack"] },
+        "restore": { "show": true },
+        "saveAsImage": { "show": true }
+      }
+    },
+    "title": {
+      "text": "Lambda Function Costs ($)",
+      "left": "center"
+    },
+    "xAxis": [
+      {
+        "type": "category",
+        "axisTick": { "show": true }
+      }
+    ],
+    "dataZoom": [
+      {
+        "type": "inside",
+        "start": 0,
+        "end": 100
+      },
+      {
+        "type": "slider"
+      }
+    ],
+    "yAxis": [
+      {
+        "type": "value"
+      }
+    ],
+    "series": [
+      {
+        "name": "",
+        "type": "line",
+        "smooth": true,
+        "label": {
+          "show": false,
+          "formatter": "{c}",
+          "fontSize": 14,
+          "rich": {
+            "name": {}
+          }
+        }
+      }
+    ]
+  }
+}

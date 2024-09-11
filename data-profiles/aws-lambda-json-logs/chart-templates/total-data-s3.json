@@ -1,0 +1,40 @@
+{
+  "insightsConfig": {
+    "name": "Total S3 (compressed)",
+    "hourly": false,
+    "zoomGroupName": "nop",
+    "humanFileSize": true,
+    "database": "s3metadata"
+  },
+  "sqlTemplates": [
+    {
+      "sql": "SELECT SUM(Size) AS value FROM keys WHERE hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
+    }
+  ],
+  "echartsConfig": {
+    "animation": false,
+    "title": {
+      "text": "Total S3 (compressed)",
+      "left": "center"
+    },
+    "graphic": {
+      "elements": [
+        {
+          "type": "text",
+          "left": "center",
+          "top": "center",
+          "style": {
+            "text": "0",
+            "fontSize": 60,
+            "fontWeight": "bold",
+            "lineDash": [0, 200],
+            "lineDashOffset": 0,
+            "fill": "black",
+            "stroke": "#000",
+            "lineWidth": 1
+          }
+        }
+      ]
+    }
+  }
+}

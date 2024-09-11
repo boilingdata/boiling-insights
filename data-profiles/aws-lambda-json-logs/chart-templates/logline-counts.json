@@ -1,0 +1,218 @@
+{
+  "insightsConfig": {
+    "name": "Loglines count"
+  },
+  "sqlTemplates": [
+    {
+      "sql": "SELECT SUM(lines) AS value, hour FROM lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+    },
+    {
+      "sql": "SELECT SUM(CASE WHEN logLevel = 'error' THEN lines ELSE 0 END) AS value, hour FROM lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+    },
+    {
+      "sql": "SELECT SUM(CASE WHEN logLevel = 'warn' THEN lines ELSE 0 END) AS value, hour FROM lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+    },
+    {
+      "sql": "SELECT SUM(CASE WHEN logLevel = 'info' THEN lines ELSE 0 END) AS value, hour FROM lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+    },
+    {
+      "sql": "SELECT SUM(CASE WHEN logLevel = 'debug' THEN lines ELSE 0 END) AS value, hour FROM lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+    },
+    {
+      "sql": "SELECT SUM(CASE WHEN logLevel IS NULL OR logLevel != 'debug' AND logLevel != 'info' AND logLevel != 'warn' AND logLevel != 'error' THEN lines ELSE 0 END) AS value, hour FROM lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+    },
+    {
+      "sql": "SELECT SUM(lines) AS value, hour FROM errorlines WHERE hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+    }
+  ],
+  "echartsConfig": {
+    "animation": false,
+    "toolbox": {
+      "show": false,
+      "orient": "vertical",
+      "left": "right",
+      "top": "center",
+      "feature": {
+        "mark": { "show": true },
+        "dataView": { "show": true, "readOnly": false },
+        "magicType": { "show": true, "type": ["line", "bar", "stack"] },
+        "restore": { "show": true },
+        "saveAsImage": { "show": true }
+      }
+    },
+    "title": {
+      "text": "Lambda Function Loglines (count)",
+      "left": "center"
+    },
+    "legend": {
+      "left": "center",
+      "right": "left",
+      "top": 30,
+      "orient": "horizontal",
+      "data": ["All", "Corrupted", "Error", "Warn", "Info", "Debug", "Unknown"]
+    },
+    "xAxis": [
+      {
+        "type": "category",
+        "axisTick": { "show": true },
+        "data": []
+      }
+    ],
+    "dataZoom": [
+      {
+        "type": "inside",
+        "start": 0,
+        "end": 100
+      },
+      {
+        "type": "slider"
+      }
+    ],
+    "yAxis": [
+      {
+        "type": "value"
+      },
+      {
+        "type": "value",
+        "position": "right",
+        "alignTicks": true,
+        "axisLine": {
+          "show": false,
+          "lineStyle": {
+            "color": "brown"
+          }
+        }
+      }
+    ],
+    "series": [
+      {
+        "z": 2,
+        "yAxisIndex": 0,
+        "name": "All",
+        "type": "line",
+        "label": {
+          "show": false,
+          "formatter": "{c}",
+          "fontSize": 14,
+          "rich": {
+            "name": {}
+          }
+        },
+        "data": []
+      },
+      {
+        "z": 0,
+        "yAxisIndex": 0,
+        "name": "Error",
+        "type": "bar",
+        "label": {
+          "show": false,
+          "formatter": "{c}",
+          "fontSize": 14,
+          "rich": {
+            "name": {}
+          }
+        },
+        "stack": "x",
+        "data": [],
+        "itemStyle": {
+          "color": "red"
+        }
+      },
+      {
+        "z": 0,
+        "yAxisIndex": 0,
+        "name": "Warn",
+        "type": "bar",
+        "label": {
+          "show": false,
+          "formatter": "{c}",
+          "fontSize": 14,
+          "rich": {
+            "name": {}
+          }
+        },
+        "stack": "x",
+        "data": [],
+        "itemStyle": {
+          "color": "orange"
+        }
+      },
+      {
+        "z": 0,
+        "yAxisIndex": 0,
+        "name": "Info",
+        "type": "bar",
+        "label": {
+          "show": false,
+          "formatter": "{c}",
+          "fontSize": 14,
+          "rich": {
+            "name": {}
+          }
+        },
+        "stack": "x",
+        "data": [],
+        "itemStyle": {
+          "color": "lightblue"
+        }
+      },
+      {
+        "z": 0,
+        "yAxisIndex": 0,
+        "name": "Debug",
+        "type": "bar",
+        "label": {
+          "show": false,
+          "formatter": "{c}",
+          "fontSize": 14,
+          "rich": {
+            "name": {}
+          }
+        },
+        "stack": "x",
+        "data": [],
+        "itemStyle": {
+          "color": "green"
+        }
+      },
+      {
+        "z": 0,
+        "yAxisIndex": 0,
+        "name": "Unknown",
+        "type": "bar",
+        "label": {
+          "show": false,
+          "formatter": "{c}",
+          "fontSize": 14,
+          "rich": {
+            "name": {}
+          }
+        },
+        "stack": "x",
+        "data": [],
+        "itemStyle": {
+          "color": "lightgrey"
+        }
+      },
+      {
+        "yAxisIndex": 1,
+        "z": 1,
+        "name": "Corrupted",
+        "type": "line",
+        "label": {
+          "show": false,
+          "formatter": "{c}",
+          "fontSize": 14,
+          "rich": {
+            "name": {}
+          }
+        },
+        "data": [],
+        "itemStyle": {
+          "color": "brown"
+        }
+      }
+    ]
+  }
+}

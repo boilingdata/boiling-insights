@@ -1,0 +1,38 @@
+{
+  "insightsConfig": {
+    "name": "Total cost",
+    "hourly": false,
+    "zoomGroupName": "nop"
+  },
+  "sqlTemplates": [
+    {
+      "sql": "SELECT SUM(cost) AS value FROM costs WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
+    }
+  ],
+  "echartsConfig": {
+    "animation": false,
+    "title": {
+      "text": "Total cost ($)",
+      "left": "center"
+    },
+    "graphic": {
+      "elements": [
+        {
+          "type": "text",
+          "left": "center",
+          "top": "center",
+          "style": {
+            "text": "0",
+            "fontSize": 60,
+            "fontWeight": "bold",
+            "lineDash": [0, 200],
+            "lineDashOffset": 0,
+            "fill": "black",
+            "stroke": "#000",
+            "lineWidth": 1
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,41 @@
+type: "compaction"
+compactDataSqlTmpl: >
+  COPY (
+    SELECT
+      json_extract_string(event, '$.eventVersion') AS eventVersion,
+      json_extract_string(event, '$.userIdentity.type') AS userType,
+      json_extract_string(event, '$.userIdentity.principalId') AS principalId,
+      json_extract_string(event, '$.userIdentity.arn') AS userArn,
+      json_extract_string(event, '$.userIdentity.accountId') AS accountId,
+      json_extract_string(event, '$.userIdentity.accessKeyId') AS accessKeyId,
+      json_extract_string(event, '$.userIdentity.userName') AS userName,
+      CAST(json_extract_string(event, '$.eventTime') AS TIMESTAMP) AS eventTime,
+      json_extract_string(event, '$.eventSource') AS eventSource,
+      json_extract_string(event, '$.eventName') AS eventName,
+      json_extract_string(event, '$.awsRegion') AS awsRegion,
+      json_extract_string(event, '$.sourceIPAddress') AS sourceIPAddress,
+      json_extract_string(event, '$.userAgent') AS userAgent,
+      json_extract_string(event, '$.errorCode') AS errorCode,
+      json_extract_string(event, '$.errorMessage') AS errorMessage,
+      json_extract(event, '$.requestParameters') AS requestParameters,
+      json_extract(event, '$.responseElements') as responseElements,
+      json_extract(event, '$.resources') AS resources,
+    FROM (
+      SELECT unnest(Records) as Event
+      FROM (
+        SELECT *
+        FROM read_json('{{{sourcePrefix}}}/**/*.json.gz')
+      )
+    )
+  ) TO '{{{targetPrefix}}}/cloudtrail-logs.parquet'
+  WITH ( FORMAT 'Parquet', COMPRESSION 'ZSTD' );
+compactMetadataSqlTmpl: >
+  COPY (
+    SELECT *
+    FROM read_json('{{{sourcePrefix}}}/**/keys.json',
+      columns = { Bucket: 'VARCHAR', year: 'VARCHAR', month: 'VARCHAR', day: 'VARCHAR', hour: 'VARCHAR', Key: 'VARCHAR', LastModified: 'TIMESTAMP', ETag: 'VARCHAR', Size: 'UBIGINT', StorageClass: 'VARCHAR' },
+      format = 'newline_delimited', hive_partitioning = false
+    )
+    ORDER BY Bucket, year, month, day, hour, Key
+  ) TO '{{{targetPrefix}}}/keys.parquet'
+  WITH ( FORMAT 'Parquet', COMPRESSION 'ZSTD' );

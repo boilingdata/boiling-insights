@@ -1,0 +1,39 @@
+{
+  "insightsConfig": {
+    "name": "Total Billed Duration",
+    "hourly": false,
+    "zoomGroupName": "nop",
+    "humanTimeFromMs": true
+  },
+  "sqlTemplates": [
+    {
+      "sql": "SELECT SUM(totalBilledDurationMs) AS value FROM costs WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
+    }
+  ],
+  "echartsConfig": {
+    "animation": false,
+    "title": {
+      "text": "Total billed duration",
+      "left": "center"
+    },
+    "graphic": {
+      "elements": [
+        {
+          "type": "text",
+          "left": "center",
+          "top": "center",
+          "style": {
+            "text": "0",
+            "fontSize": 60,
+            "fontWeight": "bold",
+            "lineDash": [0, 200],
+            "lineDashOffset": 0,
+            "fill": "black",
+            "stroke": "#000",
+            "lineWidth": 1
+          }
+        }
+      ]
+    }
+  }
+}
