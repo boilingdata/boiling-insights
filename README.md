@@ -25,12 +25,28 @@ xattr -d com.apple.quarantine /Applications/Boiling\ Insights.app
 4. Get Boiling Data authorzation token with [`bdcli`](https://github.com/boilingdata/boilingdata-bdcli) and set it into the Lambda Function environment variables (see Data Taps instructions)
 5. Optionally, you can disable CloudWatch Logs logging from your Lambda Logs by disabling the `logs:*` rights from the Lambda Functions IAM Role (to save costs)
 
-## Data Profiles (WIP)
+## Data Profiles
+
+```shell
+data-profiles
+├── aws-cloudtrail-logs
+│   ├── chart-templates
+│   ├── database-configs
+│   └── etl-configs
+└── aws-lambda-json-logs
+    ├── chart-templates
+    ├── database-configs
+    └── etl-configs
+```
 
 Data Profiles are configurations against known raw data sets and include SQL run directly with [DuckDB](https://www.duckdb.org/).
 
-Boiling Insights currently supports "AWS Lambda Logs" [`aws-lambda-json-logs`](data-profiles/aws-lambda-json-logs/) Data Profile. This data profile includes:
+1. Raw data set compaction SQL (`etl-configs`)
+2. List of aggregation table SQL derived from the compacted data set (`database-configs`)
+3. A set of Apache Echarts configurations with corresponding SQL clauses for ready made charts (`chart-templates`)
 
-1. Raw data set compaction SQL
-2. List of aggregation table SQL derived from the compacted data set
-3. A set of Apache Echarts configurations with corresponding SQL clauses for ready made charts
+### Supported Data Profiles
+
+Boiling Insights currently supports "AWS Lambda Logs" [`aws-lambda-json-logs`](data-profiles/aws-lambda-json-logs/) Data Profile.
+
+If you want to add more, create an issue or PR to this repository.
