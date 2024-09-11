@@ -27,7 +27,7 @@ xattr -d com.apple.quarantine /Applications/Boiling\ Insights.app
 
 ## Data Profiles (WIP)
 
-Data Profiles are configurations against known raw data sets.
+Data Profiles are configurations against known raw data sets and include SQL run directly with [DuckDB](https://www.duckdb.org/).
 
 Boiling Insights currently supports "AWS Lambda Logs" [`aws-lambda-json-logs`](data-profiles/aws-lambda-json-logs/) Data Profile. This data profile includes:
 
