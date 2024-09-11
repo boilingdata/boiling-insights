@@ -19,7 +19,9 @@ xattr -d com.apple.quarantine /Applications/Boiling\ Insights.app
 
 1. Install [Data Taps](https://github.com/boilingdata/data-taps-template) to get ingestion URL, and then
 2. Add [Boiling AWS Lambda Extension](https://github.com/dforsber/data-taps-lambda-extension) to your Lambda functions and
-3. Get Boiling Data authorzation token with [`bdcli`](https://github.com/boilingdata/boilingdata-bdcli) and set it into the Lambda Function environment variables (see Data Taps instructions)
+3. Configure your Lambda Functions to use JSON logging, and finally
+4. Get Boiling Data authorzation token with [`bdcli`](https://github.com/boilingdata/boilingdata-bdcli) and set it into the Lambda Function environment variables (see Data Taps instructions)
+5. Optionally, you can disable CloudWatch Logs logging from your Lambda Logs by disabling the `logs:*` rights from the Lambda Functions IAM Role (to save costs)
 
 ## Data Profiles (WIP)
 
