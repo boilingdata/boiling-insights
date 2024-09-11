@@ -1,5 +1,9 @@
 # Boiling Insights
 
+<p align="center">
+  <img src="img/2024-09-11__BoilingInsights_screenshot.png" title="Boiling Insights Example Screenshot">
+</p>
+
 ## INSTALL
 
 Download [Boiling Insights installation file for Mac OSX (arm64)](BoilingInsights-0.7.4-arm64.dmg).
