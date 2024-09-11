@@ -4,6 +4,8 @@
   <img src="img/2024-09-11__BoilingInsights_screenshot.png" title="Boiling Insights Example Screenshot">
 </p>
 
+See also example demo videos on your YouTub channel: https://www.youtube.com/watch?v=Dxg09vdpCgw
+
 ## INSTALL
 
 Download [Boiling Insights installation file for Mac OSX (arm64)](BoilingInsights-0.7.4-arm64.dmg).
