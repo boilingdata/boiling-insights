@@ -1,1 +1,1 @@
-BoilingInsights-0.7.4-arm64.dmg filter=lfs diff=lfs merge=lfs -text
+BoilingInsight*.dmg filter=lfs diff=lfs merge=lfs -text

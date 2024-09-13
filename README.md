@@ -16,7 +16,7 @@ In other words, Boiling Insights is a distributed Data Warehouse (DDWH) compute 
 
 ## INSTALL
 
-- Download [Boiling Insights installation file for Mac OSX (arm64)](BoilingInsights-0.7.4-arm64.dmg).
+- Download [Boiling Insights installation file for Mac OSX (arm64)](BoilingInsights-0.8.1-arm64.dmg).
 - Run `xattr -d com.apple.quarantine /Applications/Boiling\ Insights.app`
 
 **NOTE:** Please note that you may need to remove the Apple Quarantine flag from the app file for now. We are working on notarizing Boiling Insights with Apple to remove this restriction
@@ -71,7 +71,7 @@ graph LR
 
 Boiling Insights currently supports "AWS Lambda Logs" [`aws-lambda-json-logs`](data-profiles/aws-lambda-json-logs/) Data Profile.
 
-*If you want to add more, create an issue or PR to this repository.*
+_If you want to add more, create an issue or PR to this repository._
 
 AWS Lambda JSON Logs data profile is special as it requires installing Data Tap for the logs ingestion and AWS Lambda Extension for sending the logs to the URL. In addition, it requires fetching authorization token for the Data Tap and adding it into the Lambda environment variables so that the extension can pick it up and use it when sending the logs to the URL (without authorization the Data Tap rejects the message).
 
