@@ -16,7 +16,7 @@ In other words, Boiling Insights is a distributed Data Warehouse (DDWH) compute 
 
 ## INSTALL
 
-- Download [Boiling Insights installation file for Mac OSX (arm64)](BoilingInsights-0.8.2-arm64.dmg).
+- Download [Boiling Insights installation file for Mac OSX (arm64)](BoilingInsights-0.8.3-arm64.dmg).
 - Run `xattr -d com.apple.quarantine /Applications/Boiling\ Insights.app`
 
 **NOTE:** Please note that you may need to remove the Apple Quarantine flag from the app file for now. We are working on notarizing Boiling Insights with Apple to remove this restriction
