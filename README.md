@@ -81,6 +81,8 @@ Boiling Insights currently supports "AWS Lambda Logs" [`aws-lambda-json-logs`](d
 
 _If you want to add more, create an issue or PR to this repository._
 
+_If you want to be Data Driven, but don't know how to start, we can help you create Data Profiles over your data with visualisations too. Contact dan.forsberg@boilingdata.com for more information_
+
 AWS Lambda JSON Logs data profile is special as it requires installing Data Tap for the logs ingestion and AWS Lambda Extension for sending the logs to the URL. In addition, it requires fetching authorization token for the Data Tap and adding it into the Lambda environment variables so that the extension can pick it up and use it when sending the logs to the URL (without authorization the Data Tap rejects the message).
 
 1. Install [Data Taps](https://github.com/boilingdata/data-taps-template) to get ingestion URL, and then
