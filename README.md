@@ -18,7 +18,7 @@ Distributed local first data stack for building end to end pipelines from ingest
 
 ## Driving Principles - Data Profiles
 
-"S3 first", "compute once", "local first" are some of the principles driving Boiling Insights. It reads raw data from S3, compacts and optimises the data and derives multiple aggregation tables. Visualizations are Apache ECharts configurations and SQL clauses reading data from the aggregation tables. These **e2e configurations are called "Data Profiles"**. They record Data Engineers' and Data Analysts' work over (known) data sources so that you don't have to repeat yourself again and again, but extend.
+"S3 first", "compute once", "local first" are some of the principles driving Boiling Insights. It reads raw data from S3, compacts and optimises the data and derives multiple aggregation tables. Visualizations are Apache ECharts configurations (we could add support for Vega Lite as well, if there is demand) and SQL clauses reading data from the aggregation tables. These **e2e configurations are called "Data Profiles"**. They record Data Engineers' and Data Analysts' work over (known) data sources so that you don't have to repeat yourself again and again, but extend.
 
 Every data processing stage is synchronized back to S3, so if the stage already exists on S3, it does not have to be computed again. The more users working over the same data on S3, the more data processing power and faster results.
 
