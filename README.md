@@ -11,6 +11,7 @@ Boiling Insights is a local first data stack for building end to end pipelines f
 - Expect at least 10-100x performance improvements over traditional JVM based data processing services like Spark and Presto, and reactive snappy visualisations. Fast SSD, all-in-use CPU cores on your laptop and in-process DuckDB (top tier performing OLAP database engine with vectorised engine and in-memory tables).
 - Data is synchronised to your laptop and thus is easy to work with fast and in iterative style, including ETL SQL script and other SQL workbooks, but also Apache ECharts based visualization components. You don't need to run slow and heavy CI/CD pipelines to see if "everything works". In fact, you don't need to build data pipelines on the cloud at all, you can start right away and work with your SQL locally. It's your compute and S3 as the persistence layer. Automation and additional compute can be added by subscribing to BoilingData. The same ETL jobs run automatically on the cloud side.
 - All the data from different stages are available as Parquet and DuckDB databases on the application folder, so you can run any other tools over them if you want
+- Since the data is local, you can always delete any stage of the data and Boiling Insight will recompute it. This way you can re-process, even back in time, any amount of data you want. The feedback cycle is very fast and only when you're happy with the results, you can sync back to S3
 
 ## Vision
 
