@@ -4,7 +4,7 @@
   <img src="img/2024-09-11__BoilingInsights_screenshot.png" title="Boiling Insights Example Screenshot">
 </p>
 
-Boiling Insights runs DuckDB efficiently on your laptop over your data on S3. You can run any DuckDB extensions you like, query other data sources etc. it is up to you. It has an optional Boiling Data cloud integration to boost data processing and automation.
+Boiling Insights runs <a href="https://duckdb.org/">DuckDB</a> efficiently on your laptop over your data on S3. You can run any DuckDB extensions you like, query other data sources etc. it is up to you. The <a href="https://duckdb.org/">DuckDB</a> website has all the needed documentation for SQL. It has an optional Boiling Data cloud integration to boost data processing and automation.
 
 Boiling Insights is a local first data stack for building end to end pipelines from ingestion to transformation to visualization. Data is synchronized with S3 and multiple Boiling Insights applications can be running over the same data. The application also runs on web at https://app.boilingdata.com/, but has limited functionality compared to native application.
 
