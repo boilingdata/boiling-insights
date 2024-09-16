@@ -1,6 +1,6 @@
 # Boiling Insights
 
-**TL;DR** Download [Boiling Insights.App for Mac OSX (arm64)](https://github.com/boilingdata/boiling-insights/raw/main/BoilingInsights-0.8.5-arm64-mac.zip?download=).
+**TL;DR** Download [Boiling Insights.App for Mac OSX (Apple Silicon)](https://github.com/boilingdata/boiling-insights/raw/main/BoilingInsights-0.8.5-arm64-mac.zip?download=).
 
 
 <p align="center">
