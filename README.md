@@ -1,5 +1,8 @@
 # Boiling Insights
 
+**TL;DR** Download now: [Boiling Insights.App file for Mac OSX (arm64)](https://github.com/boilingdata/boiling-insights/raw/main/BoilingInsights-0.8.5-arm64-mac.zip?download=) and start using.
+
+
 <p align="center">
   <img src="img/2024-09-11__BoilingInsights_screenshot.png" title="Boiling Insights Example Screenshot">
 </p>
