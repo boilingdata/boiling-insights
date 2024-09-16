@@ -10,39 +10,13 @@ Boiling Insights is a local first data stack for building end to end pipelines f
 
 - Expect at least 10-100x performance improvements over traditional JVM based data processing services like Spark and Presto, and reactive snappy visualisations. Fast SSD, all-in-use CPU cores on your laptop and in-process DuckDB (top tier performing OLAP database engine with vectorised engine and in-memory tables).
 - Data is synchronised to your laptop and thus is easy to work with fast and in iterative style, including ETL SQL script and other SQL workbooks, but also Apache ECharts based visualization components. You don't need to run slow and heavy CI/CD pipelines to see if "everything works". In fact, you don't need to build data pipelines on the cloud at all, you can start right away and work with your SQL locally. It's your compute and S3 as the persistence layer. Automation and additional compute can be added by subscribing to BoilingData. The same ETL jobs run automatically on the cloud side.
+- All the data from different stages are available as Parquet and DuckDB databases on the application folder, so you can run any other tools over them if you want
 
 ## Driving Principles - Data Profiles
 
 "S3 first", "compute once", "local first" are some of the principles driving Boiling Insights. It reads raw data from S3, compacts and optimises the data and derives multiple aggregation tables. Visualizations are Apache ECharts configurations and SQL clauses reading data from the aggregation tables. These **e2e configurations are called "Data Profiles"**. They record Data Engineers' and Data Analysts' work over (known) data sources so that you don't have to repeat yourself again and again, but extend.
 
 Every data processing stage is synchronized back to S3, so if the stage already exists on S3, it does not have to be computed again. The more users working over the same data on S3, the more data processing power and faster results.
-
-In other words, Boiling Insights is a distributed Data Warehouse (DDWH) compute with S3 storage. However, since it synchronizes data on laptop, working with the data is blazing fast and iterating the whole e2e data pipeline from raw data to visuazliations happens in seconds. In addition to the full e2e view, this fast feedback cycle and UX/DX makes Boiling Insights stand apart.
-
-- See also example demo videos on your YouTub channel: https://www.youtube.com/watch?v=Dxg09vdpCgw
-
-## INSTALL
-
-1. Download zip compressed [Boiling Insights.App file for Mac OSX (arm64)](https://github.com/boilingdata/boiling-insights/raw/main/BoilingInsights-0.8.5-arm64-mac.zip?download=)
-2. Uncompress the zip archive (double-click it)
-3. Optionally, copy the resulting app to your Applications folder
-4. Start the app (double-click the App)
-
-**NOTE:** Bare with us, we're adding support for more archs.
-
-## DATA PROFILES
-
-```shell
-data-profiles
-└── ...
-└── ...
-└── aws-lambda-json-logs      # Data Profile
-    ├── etl-configs           # Stage 1
-    ├── database-configs      # Stage 2
-    └── chart-templates       # Stage 3
-```
-
-Data Profiles are configurations against known raw data sets and include SQL run directly with [DuckDB](https://www.duckdb.org/).
 
 ```mermaid
 graph LR
@@ -69,6 +43,33 @@ graph LR
     style D4 fill:#FFF2E6,stroke:#FFB84D
     style D5 fill:#FFF2E6,stroke:#FFB84D
 ```
+
+In other words, Boiling Insights is like a distributed Data Warehouse (DDWH) compute with S3 storage. However, since it synchronizes data on laptop, working with the data is blazing fast and iterating the whole e2e data pipeline from raw data to visuazliations happens in seconds. In addition to the full e2e view, this fast feedback cycle and UX/DX makes Boiling Insights stand apart.
+
+- See also example demo videos on your YouTub channel: https://www.youtube.com/watch?v=Dxg09vdpCgw
+
+## INSTALL
+
+1. Download zip compressed [Boiling Insights.App file for Mac OSX (arm64)](https://github.com/boilingdata/boiling-insights/raw/main/BoilingInsights-0.8.5-arm64-mac.zip?download=)
+2. Uncompress the zip archive (double-click it)
+3. Optionally, copy the resulting app to your Applications folder
+4. Start the app (double-click the App)
+
+**NOTE:** Bare with us, we're adding support for more archs.
+
+## DATA PROFILES
+
+```shell
+data-profiles
+└── ...
+└── ...
+└── aws-lambda-json-logs      # Data Profile
+    ├── etl-configs           # Stage 1
+    ├── database-configs      # Stage 2
+    └── chart-templates       # Stage 3
+```
+
+Data Profiles are configurations against known raw data sets and include SQL run directly with [DuckDB](https://www.duckdb.org/).
 
 - **Stage 1** (`etl-configs`): Raw data set compaction SQL
 - **Stage 2** (`database-configs`): List of aggregation table SQL derived from the compacted data set
