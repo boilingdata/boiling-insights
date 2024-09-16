@@ -8,6 +8,9 @@ Boiling Insights runs <a href="https://duckdb.org/">DuckDB</a> efficiently on yo
 
 Boiling Insights is a local first data stack for building end to end pipelines from ingestion to transformation to visualization. Data is synchronized with S3 and multiple Boiling Insights applications can be running over the same data. The application also runs on web at https://app.boilingdata.com/, but has limited functionality compared to native application.
 
+- Expect at least 10-100x performance improvements over traditional JVM based data processing services like Spark and Presto, and reactive snappy visualisations. Fast SSD, all-in-use CPU cores on your laptop and in-process DuckDB (top tier performing OLAP database engine with vectorised engine and in-memory tables).
+- Data is synchronised to your laptop and thus is easy to work with fast and in iterative style, including ETL SQL script and other SQL workbooks, but also Apache ECharts based visualization components
+
 "S3 first", "compute once", "local first" are some of the principles driving Boiling Insights. It reads raw data from S3, compacts and optimises the data and derives multiple aggregation tables. Visualizations are Apache ECharts configurations and SQL clauses reading data from the aggregation tables. These e2e configurations are called "Data Profiles". They record Data Engineers' and Data Analysts' work over (known) data sources so that you don't have to repeat yourself again and again, but extend.
 
 Every data processing stage is synchronized back to S3, so if the stage already exists on S3, it does not have to be computed again. The more users working over the same data on S3, the more data processing power and faster results.
