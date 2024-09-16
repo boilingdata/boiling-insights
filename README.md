@@ -12,6 +12,10 @@ Boiling Insights is a local first data stack for building end to end pipelines f
 - Data is synchronised to your laptop and thus is easy to work with fast and in iterative style, including ETL SQL script and other SQL workbooks, but also Apache ECharts based visualization components. You don't need to run slow and heavy CI/CD pipelines to see if "everything works". In fact, you don't need to build data pipelines on the cloud at all, you can start right away and work with your SQL locally. It's your compute and S3 as the persistence layer. Automation and additional compute can be added by subscribing to BoilingData. The same ETL jobs run automatically on the cloud side.
 - All the data from different stages are available as Parquet and DuckDB databases on the application folder, so you can run any other tools over them if you want
 
+## Vision
+
+Distributed local first data stack for building end to end pipelines from ingestion to transformation to visualization with data persisted on S3. Along with rich set of ever growing Data Profiles over known data sources/sets to allow non-data people to run analytics over their data with ease, and allow Data Analysts and Engineers to build on top of existing and avoid repeating themselves again and again (DRY).
+
 ## Driving Principles - Data Profiles
 
 "S3 first", "compute once", "local first" are some of the principles driving Boiling Insights. It reads raw data from S3, compacts and optimises the data and derives multiple aggregation tables. Visualizations are Apache ECharts configurations and SQL clauses reading data from the aggregation tables. These **e2e configurations are called "Data Profiles"**. They record Data Engineers' and Data Analysts' work over (known) data sources so that you don't have to repeat yourself again and again, but extend.
@@ -79,9 +83,9 @@ Data Profiles are configurations against known raw data sets and include SQL run
 
 Boiling Insights currently supports "AWS Lambda Logs" [`aws-lambda-json-logs`](data-profiles/aws-lambda-json-logs/) Data Profile.
 
-_If you want to add more, create an issue or PR to this repository._
+- _If you want to add more, create an issue or PR to this repository._
 
-_If you want to be Data Driven, but don't know how to start, we can help you create Data Profiles over your data with visualisations too. Contact dan.forsberg@boilingdata.com for more information_
+- _If you want to be Data Driven, but don't know how to start, we can help you create Data Profiles over your data with visualisations too. Contact dan.forsberg@boilingdata.com for more information_
 
 AWS Lambda JSON Logs data profile is special as it requires installing Data Tap for the logs ingestion and AWS Lambda Extension for sending the logs to the URL. In addition, it requires fetching authorization token for the Data Tap and adding it into the Lambda environment variables so that the extension can pick it up and use it when sending the logs to the URL (without authorization the Data Tap rejects the message).
 
