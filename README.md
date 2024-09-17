@@ -8,7 +8,13 @@
 
 Boiling Insights runs <a href="https://duckdb.org/">DuckDB</a> efficiently on your laptop over your data on S3. You can run any DuckDB extensions you like, query other data sources etc. it is up to you. The <a href="https://duckdb.org/">DuckDB</a> website has all the needed documentation for SQL. It has an optional Boiling Data cloud integration to boost data processing and automation.
 
-Boiling Insights is a local first data stack for building end to end pipelines from ingestion to transformation to visualization. Data is synchronized with S3 and multiple Boiling Insights applications can be running over the same data. The application also runs on web at https://app.boilingdata.com/, but has limited functionality compared to native application.
+Boiling Insights is a local first data stack for building end to end pipelines from ingestion to transformation to visualization. Data is synchronized with S3 and multiple Boiling Insights applications can be running over the same data.
+
+- **Admins** and **Data Engineers** can configure S3 and ETL SQL templates
+- **Data Analysts** can create aggregation/derived tables and Charts
+- **Business users** can see the charts on dashboards on the web (TBD)
+
+The application runs on web too at https://app.boilingdata.com/, but has limited functionality compared to native application. It supports querying with BoilingData, and will support interactive Dashboards as well.
 
 - Expect at least 10-100x performance improvements over traditional JVM based data processing services like Spark and Presto, and reactive snappy visualisations. Fast SSD, all-in-use CPU cores on your laptop and in-process DuckDB (top tier performing OLAP database engine with vectorised engine and in-memory tables).
 - Data is synchronised to your laptop and thus is easy to work with fast and in iterative style, including ETL SQL script and other SQL workbooks, but also Apache ECharts based visualization components. You don't need to run slow and heavy CI/CD pipelines to see if "everything works". In fact, you don't need to build data pipelines on the cloud at all, you can start right away and work with your SQL locally. It's your compute and S3 as the persistence layer. Automation and additional compute can be added by subscribing to BoilingData. The same ETL jobs run automatically on the cloud side.
