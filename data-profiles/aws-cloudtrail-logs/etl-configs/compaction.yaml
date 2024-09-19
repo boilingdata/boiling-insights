@@ -21,14 +21,10 @@ compactDataSqlTmpl: >
       json_extract(event, '$.responseElements') as responseElements,
       json_extract(event, '$.resources') AS resources,
     FROM (
-      SELECT unnest(Records) as Event
-      FROM (
-        SELECT *
-        FROM read_json('{{{sourcePrefix}}}/**/*.json.gz', union_by_name=true, maximum_object_size=167772160)
-      )
+      SELECT unnest(Records) AS event
+      FROM ( SELECT * FROM read_json('{{{sourcePrefix}}}/**/*.json.gz', union_by_name=true, maximum_object_size=16777210, ignore_errors=true, filename=true) )
     )
-  ) TO '{{{targetPrefix}}}/cloudtrail-logs.parquet' WITH ( FORMAT 'Parquet',
-  COMPRESSION 'ZSTD' );
+  ) TO '{{{targetPrefix}}}/cloudtrail-logs.parquet' WITH ( FORMAT 'Parquet', COMPRESSION 'ZSTD' );
 compactMetadataSqlTmpl: >
   COPY (
     SELECT *
@@ -37,5 +33,4 @@ compactMetadataSqlTmpl: >
       format = 'newline_delimited', hive_partitioning = false
     )
     ORDER BY Bucket, year, month, day, hour, Key
-  ) TO '{{{targetPrefix}}}/keys.parquet' WITH ( FORMAT 'Parquet', COMPRESSION
-  'ZSTD' );
+  ) TO '{{{targetPrefix}}}/keys.parquet' WITH ( FORMAT 'Parquet', COMPRESSION 'ZSTD' );
