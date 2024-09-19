@@ -1,4 +1,4 @@
-type: "compaction"
+type: compaction
 compactDataSqlTmpl: >
   COPY (
     SELECT
@@ -24,11 +24,11 @@ compactDataSqlTmpl: >
       SELECT unnest(Records) as Event
       FROM (
         SELECT *
-        FROM read_json('{{{sourcePrefix}}}/**/*.json.gz')
+        FROM read_json('{{{sourcePrefix}}}/**/*.json.gz', union_by_name=true, maximum_object_size=167772160)
       )
     )
-  ) TO '{{{targetPrefix}}}/cloudtrail-logs.parquet'
-  WITH ( FORMAT 'Parquet', COMPRESSION 'ZSTD' );
+  ) TO '{{{targetPrefix}}}/cloudtrail-logs.parquet' WITH ( FORMAT 'Parquet',
+  COMPRESSION 'ZSTD' );
 compactMetadataSqlTmpl: >
   COPY (
     SELECT *
@@ -37,5 +37,5 @@ compactMetadataSqlTmpl: >
       format = 'newline_delimited', hive_partitioning = false
     )
     ORDER BY Bucket, year, month, day, hour, Key
-  ) TO '{{{targetPrefix}}}/keys.parquet'
-  WITH ( FORMAT 'Parquet', COMPRESSION 'ZSTD' );
+  ) TO '{{{targetPrefix}}}/keys.parquet' WITH ( FORMAT 'Parquet', COMPRESSION
+  'ZSTD' );
