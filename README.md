@@ -1,6 +1,6 @@
 # Boiling Insights
 
-**TL;DR** Download [Boiling Insights.App for Mac OSX (Apple Silicon)](https://github.com/boilingdata/boiling-insights/raw/main/BoilingInsights-v0.8.8-arm64-mac.zip?download=).
+**TL;DR** Download [Boiling Insights.App for Mac OSX (Apple Silicon)](https://github.com/boilingdata/boiling-insights/raw/main/BoilingInsights-v0.8.9-arm64-mac.zip?download=).
 
 <p align="center">
   <img src="img/2024-09-11__BoilingInsights_screenshot.png" title="Boiling Insights Example Screenshot">
@@ -31,8 +31,8 @@ The application runs on web too at https://app.boilingdata.com/, but has limited
   - [x] SQL Workbooks
   - [x] Limited Web version at https://app.boilingdata.com/ (no local data support for now)
 - [ ] v0.9 generic data sources
-  - [ ] Generic Data Source S3 URL template. Data Souarces like CloudTrail logs reside on S3 in non hive-partitioned prefix. Make Boiling Insights support generic non-hive partitioned prefix templates like `s3://buck/prefix/{{year}}/{{month}}/{{day}}` while storing the optimised and compacted data into hive partitioned prefix.
-  - [ ] Generic raw "logsdata" data browser. Current logs data browser is templated for AWS Lambda Logs (colouring, columns). When supporting more data sources, make this generic while also allowing to have styling.
+  - [x] Generic Data Source S3 URL template. Data Souarces like CloudTrail logs reside on S3 in non hive-partitioned prefix. Make Boiling Insights support generic non-hive partitioned prefix templates like `s3://buck/prefix/{{year}}/{{month}}/{{day}}` while storing the optimised and compacted data into hive partitioned prefix.
+  - [x] Generic raw "logsdata" data browser. Current logs data browser is templated for AWS Lambda Logs (colouring, columns). When supporting more data sources, make this generic.
   - [ ] Support for adding, editing, saving Dashboard configurations and storing them on the disk like other data and configurations for off-the-app editing
   - [ ] SHOWCASE: AWS Cloud Trail logs with over 300k json.gz objects on S3
 - [ ] TBD
@@ -80,7 +80,7 @@ In other words, Boiling Insights is like a distributed Data Warehouse (DDWH) com
 
 ## INSTALL
 
-1. Download zip compressed [Boiling Insights.App file for Mac OSX (arm64)](https://github.com/boilingdata/boiling-insights/raw/main/BoilingInsights-v0.8.8-arm64-mac.zip?download=)
+1. Download zip compressed [Boiling Insights.App file for Mac OSX (arm64)](https://github.com/boilingdata/boiling-insights/raw/main/BoilingInsights-v0.8.9-arm64-mac.zip?download=)
 2. Uncompress the zip archive (double-click it)
 3. Optionally, copy the resulting app to your Applications folder
 4. Start the app (double-click the App)

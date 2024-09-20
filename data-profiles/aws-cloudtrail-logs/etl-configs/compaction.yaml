@@ -20,10 +20,15 @@ compactDataSqlTmpl: >
       json_extract(event, '$.requestParameters') AS requestParameters,
       json_extract(event, '$.responseElements') as responseElements,
       json_extract(event, '$.resources') AS resources,
+      filename,
+      year,
+      month,
+      day
     FROM (
-      SELECT unnest(Records) AS event
+      SELECT unnest(Records) AS event, filename, year, month, day
       FROM ( SELECT * FROM read_json('{{{sourcePrefix}}}/**/*.json.gz', union_by_name=true, maximum_object_size=33554432, ignore_errors=true, filename=true) )
     )
+    ORDER BY year, month, day, eventTime
   ) TO '{{{targetPrefix}}}/cloudtrail-logs.parquet' WITH ( FORMAT 'Parquet', COMPRESSION 'ZSTD' );
 compactMetadataSqlTmpl: >
   COPY (
