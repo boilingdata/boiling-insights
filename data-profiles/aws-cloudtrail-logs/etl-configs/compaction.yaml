@@ -22,7 +22,7 @@ compactDataSqlTmpl: >
       json_extract(event, '$.resources') AS resources,
     FROM (
       SELECT unnest(Records) AS event
-      FROM ( SELECT * FROM read_json('{{{sourcePrefix}}}/**/*.json.gz', union_by_name=true, maximum_object_size=16777210, ignore_errors=true, filename=true) )
+      FROM ( SELECT * FROM read_json('{{{sourcePrefix}}}/**/*.json.gz', union_by_name=true, maximum_object_size=33554432, ignore_errors=true, filename=true) )
     )
   ) TO '{{{targetPrefix}}}/cloudtrail-logs.parquet' WITH ( FORMAT 'Parquet', COMPRESSION 'ZSTD' );
 compactMetadataSqlTmpl: >
