@@ -21,6 +21,20 @@ The application runs on web too at https://app.boilingdata.com/, but has limited
 - All the data from different stages are available as Parquet and DuckDB databases on the application folder, so you can run any other tools over them if you want
 - Since the data is local, you can always delete any stage of the data and Boiling Insight will recompute it. This way you can re-process, even back in time, any amount of data you want. The feedback cycle is very fast and only when you're happy with the results, you can sync back to S3
 
+## Road Map
+
+- [x] v0.8 basics
+  - [x] Support for AWS Lambda Logs data
+  - [x] Support for external Data Profiles folder, editing them
+  - [x] Support for adding, editing and selecting Data Sources
+  - [x] Boiling cloud integration
+  - [x] SQL Workbooks
+  - [x] Web version at https://app.boilingdata.com/
+- [ ] v0.9
+  - [ ] Generic Data Source S3 URL template. Data Souarces like CloudTrail logs reside on S3 in non hive-partitioned prefix. Make Boiling Insights support generic non-hive partitioned prefix templates like `s3://buck/prefix/{{year}}/{{month}}/{{day}}` while storing the optimised and compacted data into hive partitioned prefix.
+  - [ ] Generic raw "logsdata" data browser. Current logs data browser is templated for AWS Lambda Logs (colouring, columns). When supporting more data sources, make this generic while also allowing to have styling.
+  - [ ] Support for adding, editing, saving Dashboard configurations and storing them on the disk like other data and configurations for off-the-app editing
+
 ## Vision
 
 Distributed local first data stack for building end to end pipelines from ingestion to transformation to visualization with data persisted on S3. Along with rich set of ever growing Data Profiles over known data sources/sets to allow non-data people to run analytics over their data with ease, and allow Data Analysts and Engineers to build on top of existing and avoid repeating themselves again and again (DRY).
