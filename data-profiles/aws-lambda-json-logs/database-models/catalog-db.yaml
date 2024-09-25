@@ -2,7 +2,7 @@ name: catalog-db-config
 type: database.config
 dataSource:
   type: parquet
-  folder: daily-folder
+  folder: optimised-folder
 dbConfig:
   name: catalog
   templateRenderingParams:
