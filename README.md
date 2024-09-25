@@ -94,15 +94,15 @@ data-profiles
 └── ...
 └── ...
 └── aws-lambda-json-logs      # Data Profile
-    ├── etl-configs           # Stage 1
-    ├── database-configs      # Stage 2
-    └── chart-templates       # Stage 3
+    ├── etl-models            # Stage 1
+    ├── database-models       # Stage 2
+    └── chart-models          # Stage 3
 ```
 
 Data Profiles are configurations against known raw data sets and include SQL run directly with [DuckDB](https://www.duckdb.org/).
 
-- **Stage 1** (`etl-configs`): Raw data set compaction SQL
-- **Stage 2** (`database-configs`): List of aggregation table SQL derived from the compacted data set
+- **Stage 1** (`etl-models`): Raw data set compaction SQL
+- **Stage 2** (`database-models`): List of aggregation table SQL derived from the compacted data set
 - **Stage 3** (`chart-templates`): A set of Apache Echarts configurations with corresponding SQL clauses for ready made charts
 
 ### Data Profile: AWS Lambda Logs
