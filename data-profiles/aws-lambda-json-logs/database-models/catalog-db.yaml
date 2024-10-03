@@ -1,4 +1,4 @@
-name: catalog-db-config
+name: catalog-db
 type: database.config
 dataSource:
   type: parquet
@@ -6,12 +6,13 @@ dataSource:
 dbConfig:
   name: catalog
   templateRenderingParams:
-    sqlQualityFilter: >
+    sqlQualityFilter: |
       WHERE length(time) = 24 AND type IS NOT NULL AND type != ''
   tables:
     - name: logGroups
       sqlTemplate: >
         SELECT year, month, day, logGroup, logStream, COUNT(*) AS lines,
-        MAX(time) AS maxTime, SUM(IF(type = 'platform.start', 1, 0))::INTEGER AS invocations,
-        SUM(length(record)) AS dataSize
-        FROM {{{SOURCE}}} {{{sqlQualityFilter}}} GROUP BY year, month, day, logGroup, logStream ORDER BY maxTime DESC
+        MAX(time) AS maxTime, SUM(IF(type = 'platform.start', 1, 0))::INTEGER AS
+        invocations, SUM(length(record)) AS dataSize FROM {{{SOURCE}}}
+        {{{sqlQualityFilter}}} GROUP BY year, month, day, logGroup, logStream
+        ORDER BY maxTime DESC

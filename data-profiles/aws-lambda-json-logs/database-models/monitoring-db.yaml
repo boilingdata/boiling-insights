@@ -1,4 +1,4 @@
-name: monitoring-db-config
+name: monitoring-db
 type: database.config
 dataSource:
   type: parquet
@@ -6,40 +6,46 @@ dataSource:
 dbConfig:
   name: monitoring
   templateRenderingParams:
-    sqlQualityFilter: >
+    sqlQualityFilter: |
       WHERE length(time) = 24 AND type IS NOT NULL AND type != ''
   tables:
     - name: lines
       sqlTemplate: >
-        SELECT year, month, day, logGroup, logStream, COUNT(*) AS lines, SUM(length(record)) AS bytes,
-        strftime(time::TIMESTAMP, '%Y-%m-%d_%H') AS hour,
-        CASE WHEN json_valid(record) THEN replace(lower(json(record).level),'"', '') ELSE null END AS logLevel
-        FROM {{{SOURCE}}} {{{sqlQualityFilter}}}
-        GROUP BY year, month, day, strftime(time::TIMESTAMP, '%Y-%m-%d_%H'), logGroup, logStream, logLevel
+        SELECT year, month, day, logGroup, logStream, COUNT(*) AS lines,
+        SUM(length(record)) AS bytes, strftime(time::TIMESTAMP, '%Y-%m-%d_%H')
+        AS hour, CASE WHEN json_valid(record) THEN
+        replace(lower(json(record).level),'"', '') ELSE null END AS logLevel
+        FROM {{{SOURCE}}} {{{sqlQualityFilter}}} GROUP BY year, month, day,
+        strftime(time::TIMESTAMP, '%Y-%m-%d_%H'), logGroup, logStream, logLevel
     - name: errorlines
       sqlTemplate: >
-        SELECT year, month, day, COUNT(*) AS lines, strftime(epoch_ms(__bd_ts::INT64*1000), '%Y-%m-%d_%H') AS hour
-        FROM {{{SOURCE}}}
-        WHERE type IS NULL OR time IS NULL OR length(time) != 24
-        GROUP BY year, month, day, strftime(epoch_ms(__bd_ts::INT64*1000), '%Y-%m-%d_%H'), logGroup, logStream
+        SELECT year, month, day, COUNT(*) AS lines,
+        strftime(epoch_ms(__bd_ts::INT64*1000), '%Y-%m-%d_%H') AS hour FROM
+        {{{SOURCE}}} WHERE type IS NULL OR time IS NULL OR length(time) != 24
+        GROUP BY year, month, day, strftime(epoch_ms(__bd_ts::INT64*1000),
+        '%Y-%m-%d_%H'), logGroup, logStream
     - name: invocations
       sqlTemplate: >
-        SELECT year, month, day, SUM(CASE WHEN type = 'platform.start' THEN 1 ELSE 0 END)::INTEGER AS invocations,
-        strftime(time::TIMESTAMP, '%Y-%m-%d_%H') AS hour, logGroup, logStream
-        FROM {{{SOURCE}}} {{{sqlQualityFilter}}}
-        GROUP BY year, month, day, strftime(time::TIMESTAMP, '%Y-%m-%d_%H'), logGroup, logStream
+        SELECT year, month, day, SUM(CASE WHEN type = 'platform.start' THEN 1
+        ELSE 0 END)::INTEGER AS invocations, strftime(time::TIMESTAMP,
+        '%Y-%m-%d_%H') AS hour, logGroup, logStream FROM {{{SOURCE}}}
+        {{{sqlQualityFilter}}} GROUP BY year, month, day,
+        strftime(time::TIMESTAMP, '%Y-%m-%d_%H'), logGroup, logStream
     - name: costs
       sqlTemplate: >
-        SELECT year, month, day,
-        CAST(SUM(json_extract(record, '$.metrics.billedDurationMs')::DOUBLE) AS DECIMAL(15,6))::DOUBLE AS totalBilledDurationMs,
-        CAST(SUM(json_extract(record, '$.metrics.billedDurationMs')::DOUBLE) * 0.0000001333 + 0.2/1000000 AS DECIMAL(15,6))::DOUBLE AS cost,
-        strftime(time::TIMESTAMP, '%Y-%m-%d_%H') AS hour, logGroup, logStream
-        FROM {{{SOURCE}}} {{{sqlQualityFilter}}} AND type='platform.report'
-        GROUP BY year, month, day, strftime(time::TIMESTAMP, '%Y-%m-%d_%H'), logGroup, logStream
+        SELECT year, month, day, CAST(SUM(json_extract(record,
+        '$.metrics.billedDurationMs')::DOUBLE) AS DECIMAL(15,6))::DOUBLE AS
+        totalBilledDurationMs, CAST(SUM(json_extract(record,
+        '$.metrics.billedDurationMs')::DOUBLE) * 0.0000001333 + 0.2/1000000 AS
+        DECIMAL(15,6))::DOUBLE AS cost, strftime(time::TIMESTAMP, '%Y-%m-%d_%H')
+        AS hour, logGroup, logStream FROM {{{SOURCE}}} {{{sqlQualityFilter}}}
+        AND type='platform.report' GROUP BY year, month, day,
+        strftime(time::TIMESTAMP, '%Y-%m-%d_%H'), logGroup, logStream
     - name: runtimemsbin
       sqlTemplate: >
-        SELECT year, month, day,
-        floor(json_extract(record, '$.metrics.billedDurationMs')::DOUBLE / 10) * 10 AS ms_bin,
-        COUNT(*) AS count, strftime(time::TIMESTAMP, '%Y-%m-%d_%H') AS hour, logGroup, logStream
-        FROM {{{SOURCE}}} {{{sqlQualityFilter}}} AND type='platform.report'
-        GROUP BY year, month, day, ms_bin, strftime(time::TIMESTAMP, '%Y-%m-%d_%H'), logGroup, logStream
+        SELECT year, month, day, floor(json_extract(record,
+        '$.metrics.billedDurationMs')::DOUBLE / 10) * 10 AS ms_bin, COUNT(*) AS
+        count, strftime(time::TIMESTAMP, '%Y-%m-%d_%H') AS hour, logGroup,
+        logStream FROM {{{SOURCE}}} {{{sqlQualityFilter}}} AND
+        type='platform.report' GROUP BY year, month, day, ms_bin,
+        strftime(time::TIMESTAMP, '%Y-%m-%d_%H'), logGroup, logStream

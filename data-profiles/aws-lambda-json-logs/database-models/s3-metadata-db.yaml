@@ -1,4 +1,4 @@
-name: s3-metadata-db-config
+name: s3-metadata-db
 type: database.config
 dataSource:
   type: parquet
@@ -8,6 +8,6 @@ dbConfig:
   tables:
     - name: keys
       sqlTemplate: >
-        SELECT * EXCLUDE(hour), year || '-' || month || '-' || day || '_' || hour AS hour
-        FROM {{{SOURCE}}}
-        ORDER BY year || '-' || month || '-' || day || '_' || hour DESC
+        SELECT * EXCLUDE(hour), year || '-' || month || '-' || day || '_' ||
+        hour AS hour FROM {{{SOURCE}}} ORDER BY year || '-' || month || '-' ||
+        day || '_' || hour DESC

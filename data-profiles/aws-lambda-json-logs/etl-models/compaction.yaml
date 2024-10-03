@@ -1,4 +1,4 @@
-type: "compaction"
+type: compaction
 compactDataSqlTmpl: >
   COPY (
     SELECT *, length(record) AS recordSize
@@ -7,8 +7,8 @@ compactDataSqlTmpl: >
     )
     WHERE type IS NOT NULL AND type != ''
     ORDER BY time DESC
-  ) TO '{{{targetPrefix}}}/logs.parquet'
-  WITH ( FORMAT 'Parquet', COMPRESSION 'ZSTD' );
+  ) TO '{{{targetPrefix}}}/logs.parquet' WITH ( FORMAT 'Parquet', COMPRESSION
+  'ZSTD' );
 compactMetadataSqlTmpl: >
   COPY (
     SELECT *
@@ -17,5 +17,5 @@ compactMetadataSqlTmpl: >
       format = 'newline_delimited', hive_partitioning = false
     )
     ORDER BY Bucket, year, month, day, hour, Key
-  ) TO '{{{targetPrefix}}}/keys.parquet'
-  WITH ( FORMAT 'Parquet', COMPRESSION 'ZSTD' );
+  ) TO '{{{targetPrefix}}}/keys.parquet' WITH ( FORMAT 'Parquet', COMPRESSION
+  'ZSTD' );
