@@ -16,3 +16,7 @@ dbConfig:
         invocations, SUM(length(record)) AS dataSize FROM {{{SOURCE}}}
         {{{sqlQualityFilter}}} GROUP BY year, month, day, logGroup, logStream
         ORDER BY maxTime DESC
+    - name: compactedLogsView
+      view: true
+      sqlTemplate: |
+        SELECT * FROM {{{SOURCE}}}
