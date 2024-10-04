@@ -1,6 +1,6 @@
 # Boiling Insights
 
-**TL;DR** Download [Boiling Insights.App for Mac OSX (Apple Silicon)](https://github.com/boilingdata/boiling-insights/raw/main/BoilingInsights-v0.8.16-arm64-mac.zip?download=).
+**TL;DR** Download [Boiling Insights.App for Mac OSX (Apple Silicon)](https://github.com/boilingdata/boiling-insights/raw/main/BoilingInsights-v0.8.17-arm64-mac.zip?download=).
 
 <p align="center">
   <img src="img/2024-09-11__BoilingInsights_screenshot.png" title="Boiling Insights Example Screenshot">
@@ -82,7 +82,7 @@ In other words, Boiling Insights is like a distributed Data Warehouse (DDWH) com
 
 ## INSTALL
 
-1. Download zip compressed [Boiling Insights.App file for Mac OSX (arm64)](https://github.com/boilingdata/boiling-insights/raw/main/BoilingInsights-v0.8.16-arm64-mac.zip?download=)
+1. Download zip compressed [Boiling Insights.App file for Mac OSX (arm64)](https://github.com/boilingdata/boiling-insights/raw/main/BoilingInsights-v0.8.17-arm64-mac.zip?download=)
 2. Uncompress the zip archive (double-click it)
 3. Optionally, copy the resulting app to your Applications folder
 4. Start the app (double-click the App)
