@@ -1,0 +1,57 @@
+{
+  "insightsConfig": {
+    "name": "Data Sync Meter",
+    "hourly": false
+  },
+  "sqlTemplates": [
+    {
+      "sql": "SELECT unnest([{'value': 10, 'hour': 'N/A'}], recursive := true);"
+    }
+  ],
+  "echartsConfig": {
+    "grid": {
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0
+    },
+    "color": [
+      "lightgreen",
+      "lightblue"
+    ],
+    "animation": true,
+    "xAxis": [
+      {
+        "type": "category",
+        "axisTick": {
+          "show": true
+        },
+        "data": []
+      }
+    ],
+    "yAxis": [
+      {
+        "max": 100,
+        "show": false,
+        "offset": 0,
+        "position": "left",
+        "type": "value"
+      }
+    ],
+    "series": [
+      {
+        "colorBy": "data",
+        "name": "Data Meter",
+        "type": "bar",
+        "smooth": true,
+        "yAxisIndex": 0,
+        "label": {
+          "show": true,
+          "formatter": "{c}",
+          "fontSize": 14
+        },
+        "data": []
+      }
+    ]
+  }
+}
