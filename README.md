@@ -94,12 +94,15 @@ In other words, Boiling Insights is like a distributed Data Warehouse (DDWH) com
 
 ```shell
 data-profiles
-└── ...
-└── ...
-└── aws-lambda-json-logs      # Data Profile
-    ├── etl-models            # Stage 1
-    ├── database-models       # Stage 2
-    └── chart-models          # Stage 3
+├── aws-lambda-json-logs  # Data Profile
+│   ├── chart-models      # stage 3 - visualisation with SQL and Apache ECHarts
+│   ├── database-models   # stage 2 - derived / aggregated DuckDB tables
+│   └── etl-models        # stage 1 - ingestion, compaction, optimisation
+├── aws-cloudtrail-logs   # Data Profile
+│   ├── database-models   # ..
+│   └── etl-models
+└── general               # General charts used by Boiling Insights itself
+    └── chart-models
 ```
 
 Data Profiles are configurations against known raw data sets and include SQL run directly with [DuckDB](https://www.duckdb.org/).
