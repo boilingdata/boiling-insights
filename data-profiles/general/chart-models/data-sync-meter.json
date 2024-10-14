@@ -5,52 +5,57 @@
   },
   "sqlTemplates": [
     {
-      "sql": "SELECT unnest([{'value': 10, 'hour': 'N/A'}], recursive := true);"
+      "sql": "SELECT unnest([{'value': 10, 'name': 'N/A'}], recursive := true);"
     }
   ],
   "echartsConfig": {
+    "color": [
+      "lightgreen",
+      "lightblue",
+      "yellow"
+    ],
     "grid": {
       "left": 0,
       "top": 0,
       "right": 0,
       "bottom": 0
     },
-    "color": [
-      "lightgreen",
-      "lightblue"
-    ],
-    "animation": true,
+    "animation": false,
+    "dataset": {
+      "dimensions": [
+        "name",
+        "value"
+      ],
+      "source": [
+        {
+          "name": "foo",
+          "value": 32
+        }
+      ]
+    },
     "xAxis": [
       {
         "type": "category",
-        "axisTick": {
-          "show": true
-        },
-        "data": []
+        "show": false
       }
     ],
     "yAxis": [
       {
         "max": 100,
         "show": false,
-        "offset": 0,
-        "position": "left",
         "type": "value"
       }
     ],
     "series": [
       {
-        "colorBy": "data",
-        "name": "Data Meter",
         "type": "bar",
         "smooth": true,
-        "yAxisIndex": 0,
+        "colorBy": "data",
         "label": {
           "show": true,
-          "formatter": "{c}",
-          "fontSize": 14
-        },
-        "data": []
+          "formatter": "{@value}",
+          "fontSize": 10
+        }
       }
     ]
   }
