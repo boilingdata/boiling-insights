@@ -5,9 +5,6 @@ dataSource:
   folder: optimised-folder
 dbConfig:
   name: catalog
-  templateRenderingParams:
-    sqlQualityFilter: |
-      WHERE length(time) = 24 AND type IS NOT NULL AND type != ''
   tables:
     - name: compactedLogsView
       view: true
