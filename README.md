@@ -36,8 +36,10 @@ The application runs on web too at https://app.boilingdata.com/, but has limited
   - [x] Generic Data Source S3 URL template. Data Souarces like CloudTrail logs reside on S3 in non hive-partitioned prefix. Make Boiling Insights support generic non-hive partitioned prefix templates like `s3://buck/prefix/{{year}}/{{month}}/{{day}}` while storing the optimised and compacted data into hive partitioned prefix.
   - [x] Generic raw "logsdata" data browser. Current logs data browser is templated for AWS Lambda Logs (colouring, columns). When supporting more data sources, make this generic.
   - [x] Data Flow for the full data pipeline of s3 --> local raw --> local optimised/compacted --> local derived DuckDB tables
-  - [ ] Support for adding, editing, saving Dashboard configurations and storing them on the disk like other data and configurations for off-the-app editing
-  - [ ] SHOWCASE: AWS Cloud Trail logs with over 300k json.gz objects on S3
+  - [x] Support for adding, editing, saving Dashboard configurations and storing them on the disk like other data and configurations for off-the-app editing
+  - [x] Support for direct DuckDB to DynamoDB queries (LRU 5min cache for performance and cost saving)
+  - [x] PostgreSQL connections
+  - [x] Unity Catalog connection and direct queries from DuckDB (`uc_catalog`, `delta`)
 - [ ] TBD
   - [ ] Add back DuckDB WASM into the Web version, including IndexedDB integration so that web version can show interactive Dashboards based on aggregated tables
 

@@ -13,7 +13,7 @@
       "show": true,
       "orient": "vertical",
       "left": "right",
-      "top": "top",
+      "top": "center",
       "feature": {
         "dataView": {
           "show": false,
