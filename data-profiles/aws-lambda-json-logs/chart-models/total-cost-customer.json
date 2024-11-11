@@ -7,7 +7,7 @@
   "sqlTemplates": [
     {
       "comment": "$0.000001/ms BoilingData, AWS 0.000000133334/ms ==> 0.000001 / 0.000000133334 ==> 7.49999625",
-      "sql": "SELECT SUM(cost)*7.49999625 AS value FROM costs WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
+      "sql": "SELECT SUM(cost)*7.49999625 AS value FROM \"{{{database}}}\".\"{{{schema}}}\".costs WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
     }
   ],
   "echartsConfig": {

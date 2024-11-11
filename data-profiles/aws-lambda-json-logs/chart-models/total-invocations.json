@@ -7,7 +7,7 @@
   },
   "sqlTemplates": [
     {
-      "sql": "SELECT SUM(invocations) AS value FROM invocations WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
+      "sql": "SELECT SUM(invocations) AS value FROM \"{{{database}}}\".\"{{{schema}}}\".invocations WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
     }
   ],
   "echartsConfig": {

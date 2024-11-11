@@ -7,7 +7,7 @@
   },
   "sqlTemplates": [
     {
-      "sql": "SELECT SUM(bytes) AS value FROM lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
+      "sql": "SELECT SUM(bytes) AS value FROM \"{{{database}}}\".\"{{{schema}}}\".lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
     }
   ],
   "echartsConfig": {

@@ -4,25 +4,25 @@
   },
   "sqlTemplates": [
     {
-      "sql": "SELECT SUM(lines) AS value, hour FROM lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+      "sql": "SELECT SUM(lines) AS value, hour FROM \"{{{database}}}\".\"{{{schema}}}\".lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
     },
     {
-      "sql": "SELECT SUM(CASE WHEN logLevel = 'error' THEN lines ELSE 0 END) AS value, hour FROM lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+      "sql": "SELECT SUM(CASE WHEN logLevel = 'error' THEN lines ELSE 0 END) AS value, hour FROM \"{{{database}}}\".\"{{{schema}}}\".lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
     },
     {
-      "sql": "SELECT SUM(CASE WHEN logLevel = 'warn' THEN lines ELSE 0 END) AS value, hour FROM lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+      "sql": "SELECT SUM(CASE WHEN logLevel = 'warn' THEN lines ELSE 0 END) AS value, hour FROM \"{{{database}}}\".\"{{{schema}}}\".lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
     },
     {
-      "sql": "SELECT SUM(CASE WHEN logLevel = 'info' THEN lines ELSE 0 END) AS value, hour FROM lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+      "sql": "SELECT SUM(CASE WHEN logLevel = 'info' THEN lines ELSE 0 END) AS value, hour FROM \"{{{database}}}\".\"{{{schema}}}\".lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
     },
     {
-      "sql": "SELECT SUM(CASE WHEN logLevel = 'debug' THEN lines ELSE 0 END) AS value, hour FROM lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+      "sql": "SELECT SUM(CASE WHEN logLevel = 'debug' THEN lines ELSE 0 END) AS value, hour FROM \"{{{database}}}\".\"{{{schema}}}\".lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
     },
     {
-      "sql": "SELECT SUM(CASE WHEN logLevel IS NULL OR logLevel != 'debug' AND logLevel != 'info' AND logLevel != 'warn' AND logLevel != 'error' THEN lines ELSE 0 END) AS value, hour FROM lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+      "sql": "SELECT SUM(CASE WHEN logLevel IS NULL OR logLevel != 'debug' AND logLevel != 'info' AND logLevel != 'warn' AND logLevel != 'error' THEN lines ELSE 0 END) AS value, hour FROM \"{{{database}}}\".\"{{{schema}}}\".lines WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
     },
     {
-      "sql": "SELECT SUM(lines) AS value, hour FROM errorlines WHERE hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+      "sql": "SELECT SUM(lines) AS value, hour FROM \"{{{database}}}\".\"{{{schema}}}\".errorlines WHERE hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
     }
   ],
   "echartsConfig": {
@@ -39,11 +39,7 @@
         },
         "magicType": {
           "show": true,
-          "type": [
-            "line",
-            "bar",
-            "stack"
-          ]
+          "type": ["line", "bar", "stack"]
         },
         "restore": {
           "show": true
@@ -62,15 +58,7 @@
       "right": "left",
       "top": 30,
       "orient": "horizontal",
-      "data": [
-        "All",
-        "Corrupted",
-        "Error",
-        "Warn",
-        "Info",
-        "Debug",
-        "Unknown"
-      ]
+      "data": ["All", "Corrupted", "Error", "Warn", "Info", "Debug", "Unknown"]
     },
     "xAxis": [
       {

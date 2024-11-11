@@ -7,7 +7,7 @@
   },
   "sqlTemplates": [
     {
-      "sql": "SELECT SUM(totalBilledDurationMs) AS value FROM costs WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
+      "sql": "SELECT SUM(totalBilledDurationMs) AS value FROM \"{{{database}}}\".\"{{{schema}}}\".costs WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
     }
   ],
   "echartsConfig": {
@@ -26,10 +26,7 @@
             "text": "0",
             "fontSize": 60,
             "fontWeight": "bold",
-            "lineDash": [
-              0,
-              200
-            ],
+            "lineDash": [0, 200],
             "lineDashOffset": 0,
             "fill": "black",
             "stroke": "#000",

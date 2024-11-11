@@ -6,7 +6,7 @@
   },
   "sqlTemplates": [
     {
-      "sql": "SELECT (ms_bin + 10) AS hour, SUM(count) AS value FROM runtimemsbin WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY (ms_bin + 10) ORDER BY (ms_bin + 10);"
+      "sql": "SELECT (ms_bin + 10) AS hour, SUM(count) AS value FROM \"{{{database}}}\".\"{{{schema}}}\".runtimemsbin WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY (ms_bin + 10) ORDER BY (ms_bin + 10);"
     }
   ],
   "echartsConfig": {
@@ -26,11 +26,7 @@
         },
         "magicType": {
           "show": true,
-          "type": [
-            "line",
-            "bar",
-            "stack"
-          ]
+          "type": ["line", "bar", "stack"]
         },
         "restore": {
           "show": true

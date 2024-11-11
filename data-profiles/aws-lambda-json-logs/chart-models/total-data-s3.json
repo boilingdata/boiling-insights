@@ -8,7 +8,7 @@
   },
   "sqlTemplates": [
     {
-      "sql": "SELECT SUM(Size) AS value FROM keys WHERE hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
+      "sql": "SELECT SUM(Size) AS value FROM \"{{{database}}}\".\"{{{schema}}}\".keys WHERE hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}';"
     }
   ],
   "echartsConfig": {

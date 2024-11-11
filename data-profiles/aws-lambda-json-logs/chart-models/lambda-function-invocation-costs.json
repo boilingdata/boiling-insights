@@ -4,7 +4,7 @@
   },
   "sqlTemplates": [
     {
-      "sql": "SELECT SUM(cost) AS value, hour FROM costs WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
+      "sql": "SELECT SUM(cost) AS value, hour FROM \"{{{database}}}\".\"{{{schema}}}\".costs WHERE {{{globalWhereFilter}}} AND hour BETWEEN '{{{startHour}}}' AND '{{{endHour}}}' GROUP BY hour ORDER BY hour;"
     }
   ],
   "echartsConfig": {
