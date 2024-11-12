@@ -4,7 +4,8 @@
     "hourly": false,
     "zoomGroupName": "nop",
     "humanFileSize": true,
-    "database": "s3metadata"
+    "database": "s3metadata",
+    "schema": "main"
   },
   "sqlTemplates": [
     {

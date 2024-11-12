@@ -3,7 +3,9 @@
     "name": "Total volume (uncompressed)",
     "hourly": false,
     "zoomGroupName": "nop",
-    "humanFileSize": true
+    "humanFileSize": true,
+    "database": "monitoring",
+    "schema": "main"
   },
   "sqlTemplates": [
     {

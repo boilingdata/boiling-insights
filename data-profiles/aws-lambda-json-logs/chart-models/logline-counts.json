@@ -1,6 +1,8 @@
 {
   "insightsConfig": {
-    "name": "Loglines count"
+    "name": "Loglines count",
+    "database": "monitoring",
+    "schema": "main"
   },
   "sqlTemplates": [
     {

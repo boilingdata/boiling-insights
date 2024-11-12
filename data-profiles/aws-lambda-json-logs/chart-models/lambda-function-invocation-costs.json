@@ -1,6 +1,8 @@
 {
   "insightsConfig": {
-    "name": "Costs"
+    "name": "Costs",
+    "database": "monitoring",
+    "schema": "main"
   },
   "sqlTemplates": [
     {

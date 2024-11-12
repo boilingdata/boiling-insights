@@ -2,7 +2,9 @@
   "insightsConfig": {
     "name": "Total cost (customer)",
     "hourly": false,
-    "zoomGroupName": "nop"
+    "zoomGroupName": "nop",
+    "database": "monitoring",
+    "schema": "main"
   },
   "sqlTemplates": [
     {

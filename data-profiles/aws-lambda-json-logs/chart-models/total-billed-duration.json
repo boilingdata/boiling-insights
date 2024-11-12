@@ -3,7 +3,9 @@
     "name": "Total Billed Duration",
     "hourly": false,
     "zoomGroupName": "nop",
-    "humanTimeFromMs": true
+    "humanTimeFromMs": true,
+    "database": "monitoring",
+    "schema": "main"
   },
   "sqlTemplates": [
     {

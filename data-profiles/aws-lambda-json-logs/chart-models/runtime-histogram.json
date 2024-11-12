@@ -2,7 +2,9 @@
   "insightsConfig": {
     "name": "Runtime histogram",
     "hourly": false,
-    "zoomGroupName": "runtimeHistogram"
+    "zoomGroupName": "runtimeHistogram",
+    "database": "monitoring",
+    "schema": "main"
   },
   "sqlTemplates": [
     {

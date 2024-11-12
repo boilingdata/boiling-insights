@@ -3,7 +3,9 @@
     "name": "Total Invocations (count)",
     "hourly": false,
     "zoomGroupName": "nop",
-    "numberWithCommas": true
+    "numberWithCommas": true,
+    "database": "monitoring",
+    "schema": "main"
   },
   "sqlTemplates": [
     {
