@@ -1,6 +1,6 @@
 # Boiling Insights
 
-**TL;DR** [Download Boiling Insights](http://boilingdata-public.s3-website-eu-west-1.amazonaws.com/)
+**TL;DR** [Download Boiling Insights](https://www.boilinginsights.com/)
 
 <p align="center">
   <img src="img/2024-09-11__BoilingInsights_screenshot.png" title="Boiling Insights Example Screenshot">
